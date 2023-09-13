@@ -1,22 +1,33 @@
 #include <iostream>
+using namespace std;
 
 class MyClass {
 public:
-    int dataMember = 42;
+    int value;
+
+    // Function to initialize the value
+    void initializeValue(int v) {
+        value = v;
+    }
+
+    // Function to modify the value using call by reference
+    void modifyValue(int &newValue) {
+        value = newValue;
+    }
 };
 
 int main() {
     MyClass obj;
-    MyClass* objPtr = &obj;
+    int originalValue = 10;
 
-    // Declare a pointer to a data member of MyClass
-    int MyClass::*dataMemberPtr = &MyClass::dataMember;
+    obj.initializeValue(originalValue);
 
-    // Access the data member using the pointer
-    int data = obj.*dataMemberPtr;
+    cout << "Original Value: " << obj.value << endl;
 
-    // Print the value of the data member
-    std::cout << "Data member value: " << data ;
+    int newValue = 20;
+    obj.modifyValue(newValue);
+
+    cout << "Modified Value: " << obj.value << endl;
 
     return 0;
 }

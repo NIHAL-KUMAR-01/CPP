@@ -8,7 +8,7 @@ class about_friend
 	float cgpa;
 	public:
 		void input();
-	friend void output(about_friend);
+		friend void output(about_friend);
 };
 void about_friend :: input()
 {
